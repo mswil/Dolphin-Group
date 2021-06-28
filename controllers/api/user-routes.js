@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
         return User.create({
             email: req.body.email,
             password: req.body.password,
-            isAdmin: req.body.is_Admin
+            is_admin: req.body.is_admin
         });
     })
     .then(dbCreateUserData => {
@@ -78,3 +78,5 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 })
+
+module.exports = router;
