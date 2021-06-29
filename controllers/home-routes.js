@@ -2,70 +2,51 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Item, Category } = require('../models');
 
-const findItems = async itemName => {
-
+const findItems = async (itemName, categoryId) => {
+    console.log(categoryId)
     const include = {
         model: Category,
         attributes: [['name', 'category_name']]
     }
 
+    const where = {}
     if (itemName) {
-        const items = await Item.findAll({
-            where: {
-                name: itemName
-            },
-            include
-        })
-        if (items.length === 0) {
-            throw { message: `No match for ${itemName}` }
-        }
-        return items;
+        where.name = itemName;
     }
-    else {
-        const items = await Item.findAll({ include });
-        return items;
+    if (categoryId) {
+        where.category_id = parseInt(categoryId);
     }
+
+    return await Item.findAll({ where, include });
+
 }
 
-const findCategories = async categoryName => {
-    const include = {
-        module: Item
-    }
+const findCategories = async () => {
 
-    if(categoryName) {
-        const categories = await Category.findAll({
-            where: {
-                name: categoryName
-            },
-            include
-        })
-        if (categories.length === 0) {
-            throw { message: `No category called ${categoryName}`}
-        }
-        return categories;
-    }
-    else {
-        const categories = await Category.findAll({include});
-        return categories;
-    }
+    return await Category.findAll({});
 }
 
-router.get('/', (req, res) => {
-
+router.get('/', async (req, res) => {
+    console.log(req)
+    
     try {
-        const items = await findItems();
+        // http://localhost:3001/?item_name=name
+        const items = await findItems(req.query.item_name, req.query.category_id);
+        // http://localhost:3001/?category_id=#
         const categories = await findCategories();
-        res.render('homepage', {
-            items, 
-            categories, 
-            loggedIn: req.session.loggedIn, 
-            isAdmin: req.session.isAdmin
-        })
+        res.json({items, categories})
+        // res.render('homepage', {
+        //     items,
+        //     categories,
+        //     loggedIn: req.session.loggedIn,
+        //     isAdmin: req.session.isAdmin
+        // })
     }
     catch (err) {
         res.status(500).json(err)
     }
 });
+
 
 
 module.exports = router;
