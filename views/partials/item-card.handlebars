@@ -1,3 +1,4 @@
+<div class="column is-one-quarter">
 <div class="card">
     {{!-- Add image if time --}}
   {{!-- <div class="card-image">
@@ -5,8 +6,8 @@
       <img src="" alt="">
     </figure>
   </div> --}}
-  <div class="card-header">
-      <p class="card-header-title">
+  <div class="card-header secondary">
+      <p class="card-header-title is-centered secondary">
           {{!-- Item Name --}}
           {{name}}
       </p>
@@ -19,9 +20,10 @@
      <p>{{in_stock}}</p>
     </div>
   </div>
-  <div class="card-footer">
+  <div class="card-footer bgcolor borderbox">
       {{!-- route add to cart --}}
       <a class="card-footer-item" href="/api-here/{{id}}">Add to Cart</a>
       
   </div>
+</div>
 </div>

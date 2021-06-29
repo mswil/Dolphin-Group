@@ -1,14 +1,15 @@
 .light-theme {
-    color: #000000;
-    background: #00FF00;
-  }
-.bgcolor {   
-background-color: #0097a7;
+  color: #000000;
+  background: #00ff00;
+}
+.bgcolor {
+  background-color: #0097a7;
+}
+.secondary {
+  background-color: #93c470;
+  color: #eeeeee;
+}
 
-} 
-.secondary { 
-    background-color: #93c470;
-    color: #eeeeee;
-
-
+.borderbox {
+  border: 2px solid #000000;
 }
