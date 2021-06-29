@@ -55,11 +55,17 @@ router.get('/', (req, res) => {
     try {
         const items = await findItems();
         const categories = await findCategories();
-        res.render('homepage', {items, categories})
+        res.render('homepage', {
+            items, 
+            categories, 
+            loggedIn: req.session.loggedIn, 
+            isAdmin: req.session.isAdmin
+        })
     }
     catch (err) {
         res.status(500).json(err)
     }
 });
+
 
 module.exports = router;
