@@ -8,18 +8,28 @@ const Category = require('./Category');
 // Create associations
 
 
-// Items belongsTo Category
-Item.belongsTo(Category)
-// Categories have many Items
-Category.hasMany(Item)
-// Products belongToMany Orders (through OrderItems)
+// User
+User.hasMany(Order);
+Order.belongsTo(User);
+
 Item.belongsToMany(Order, {
-  through: OrderItems
+  through: OrderItems,
 })
-// Order belongToMany Items (through OrderItems)
 Order.belongsToMany(Item, {
-  through: OrderItems
+  through: OrderItems,
 })
+
+// Order
+Order.hasMany(OrderItems);
+OrderItems.belongsTo(Order);
+
+// OrderItems
+OrderItems.belongsTo(Item);
+Item.hasMany(OrderItems);
+
+// Item
+Item.belongsTo(Category);
+Category.hasMany(Item);
 
 module.exports = {
   User,
