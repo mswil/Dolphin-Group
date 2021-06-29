@@ -27,13 +27,15 @@ router.get('/', async (req, res) => {
   try {
     // http://localhost:3001/?item_name=name
     const items = await findItems(req.query.item_name, req.query.category_id);
+    const plainItems = items.map((item) => item.get({ plain: true }));
     // http://localhost:3001/?category_id=#
     const categories = await findCategories();
-    const itemPlain = items.map((data) => data.get({ plain: true }));
-    console.log(itemPlain);
+    const plainCategories = categories.map((category) =>
+      category.get({ plain: true })
+    );
     res.render('homepage', {
-      itemPlain,
-      categories,
+      items: plainItems,
+      categories: plainCategories,
       loggedIn: req.session.loggedIn,
       isAdmin: req.session.isAdmin,
     });
