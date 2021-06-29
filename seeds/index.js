@@ -4,7 +4,6 @@ const seedUser = require('./user-seeds');
 const seedOrder = require('./order-seeds');
 const seedOrderItems = require('./order-items-seeds');
 
-
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
