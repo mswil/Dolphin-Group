@@ -1,14 +1,13 @@
 const router = require('express').Router();
 const { Item } = require('../models');
 const apiRoutes = require('./api');
+const homeRoutes = require('./home-routes');
 
 router.use('/api', apiRoutes);
+router.use('/', homeRoutes);
 
-router.use('/', (req, res) => {
-  Item.findAll().then((dbData) => {
-    const items = dbData.map((data) => data.get({ plain: true }));
-    res.render('homepage', { items });
-  });
+router.use((req, res) => {
+  res.status(404).end();
 });
 
 module.exports = router;
