@@ -1,0 +1,28 @@
+{{!-- Item id from db --}}
+<div class="card">
+    {{!-- Add image if time --}}
+  {{!-- <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="" alt="">
+    </figure>
+  </div> --}}
+  <div class="card-header">
+      <p class="card-header-title">
+          {{!-- Item Name --}}
+          {{name}}
+      </p>
+  </div>
+  <div class="card-content">
+    <div class="content">
+        {{!-- Item description --}}
+     <p>{{description}}</p>
+     <p>{{price}}</p>
+     <p>{{stock}}</p>
+    </div>
+  </div>
+  <div class="card-footer">
+      {{!-- route add to cart --}}
+      <a class="card-footer-item" href="/api-here/{{id}}">Add to Cart</a>
+      
+  </div>
+</div>
