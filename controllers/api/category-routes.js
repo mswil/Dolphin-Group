@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
 });
 
 // DELETE /api/categories/:id
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     Category.destroy({
         where: {
             id: req.params.id

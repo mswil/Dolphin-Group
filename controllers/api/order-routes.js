@@ -89,12 +89,12 @@ router.put('/update-item-amount/:id', (req, res) => {
     // expects {"amount_ordered": #}
     OrderItems.update(
         {
+            amount_ordered: req.body.amount_ordered
+        },
+        {
             where: {
                 id: req.params.id
             },
-        },
-        {
-            amount_ordered: req.body.amount_ordered
         }
     )
         .then(dbOrderItem => {

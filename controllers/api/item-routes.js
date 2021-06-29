@@ -62,18 +62,17 @@ router.put('/:id', (req, res) => {
     // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "in_stock": #, "category_id": #}
     Item.update(
         {
-            where: {
-                id: req.params.id
-            }
-        },
-        {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
             in_stock: req.body.in_stock,
             category_id: req.body.category_id
-        }
-    )
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        })
         .then(dbItemData => {
             if (!dbItemData) {
                 res.status(404).json({ message: 'There is no item with that Id' });
