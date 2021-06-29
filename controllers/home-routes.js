@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const { Item, Category } = require('../models');
 
 const findItems = async (itemName, categoryId) => {
-    console.log(categoryId)
     const include = {
         model: Category,
         attributes: [['name', 'category_name']]
@@ -27,7 +26,6 @@ const findCategories = async () => {
 }
 
 router.get('/', async (req, res) => {
-    console.log(req)
     
     try {
         // http://localhost:3001/?item_name=name
