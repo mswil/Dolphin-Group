@@ -32,13 +32,12 @@ router.get('/', async (req, res) => {
         const items = await findItems(req.query.item_name, req.query.category_id);
         // http://localhost:3001/?category_id=#
         const categories = await findCategories();
-        res.json({items, categories})
-        // res.render('homepage', {
-        //     items,
-        //     categories,
-        //     loggedIn: req.session.loggedIn,
-        //     isAdmin: req.session.isAdmin
-        // })
+         res.render('homepage', {
+             items,
+             categories,
+             loggedIn: req.session.loggedIn,
+             isAdmin: req.session.isAdmin
+         })
     }
     catch (err) {
         res.status(500).json(err)
