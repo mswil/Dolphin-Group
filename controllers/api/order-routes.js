@@ -73,6 +73,42 @@ router.post('/', (req, res) => {
         });
 });
 
+// POST /api/orders/add-item
+router.post('/add-item', (req, res) => {
+    // expects {"item_id": #, "order_id": #, "amount_ordered": #}
+    OrderItems.create(req.body)
+        .then(dbOrderItem => res.json(dbOrderItem))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json(err);
+        });
+});
+
+// PUT /api/order/update-item-amount/:id
+router.put('/update-item-amount/:id', (req, res) => {
+    // expects {"amount_ordered": #}
+    OrderItems.update(
+        {
+            where: {
+                id: req.params.id
+            },
+        },
+        {
+            amount_ordered: req.body.amount_ordered
+        }
+    )
+        .then(dbOrderItem => {
+            if (!dbOrderItem) {
+                res.status(404).json({ message: 'Order does not contain item' })
+            }
+            res.json(dbOrderItem);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json(err);
+        });
+});
+
 // DELETE /api/orders/:id
 router.delete('/:id', (req, res) => {
     Order.destroy({
@@ -86,6 +122,25 @@ router.delete('/:id', (req, res) => {
                 return;
             }
             res.json(dbOrderInfo);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json(err);
+        });
+})
+
+// DELETE /api/orders/remove-item/:id
+router.delete('/remove-item/:id', (req, res) => {
+    OrderItems.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbOrderItem => {
+            if (!dbOrderItem) {
+                res.status(404).json({ message: 'Order does not contain item' })
+            }
+            res.json(dbOrderItem);
         })
         .catch(err => {
             console.error(err);
