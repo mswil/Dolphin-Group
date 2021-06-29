@@ -3,6 +3,7 @@ const {User} = require('../models');
 
 // POST /user/login
 router.post('/login', (req, res) => {
+    // expects {"email": "email@email.com", "password": "asdf"}
     User.findOne({where: {email: req.body.email}})
     .then(dbUser => {
         if (!dbUser) {
