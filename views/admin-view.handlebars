@@ -1,0 +1,21 @@
+{{!-- Needs:
+link for adding product and api route that posts it
+table to display products and info
+form to add product
+link to remove a product --}}
+
+<table>
+<thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th># In Stock</th>
+    <th>Price</th>
+</thead>
+<tbody>
+
+{{#each item}}
+{{ > admin-table Item }}
+{{/each}}
+</tbody>
+</table>
