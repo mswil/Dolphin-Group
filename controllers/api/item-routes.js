@@ -42,12 +42,12 @@ router.get('/:id', (req, res) => {
 
 // POST /api/items
 router.post('/', (req, res) => {
-    // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "stock": #, "category_id": #}
+    // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "in_stock": #, "category_id": #}
     Item.create({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
-        stock: req.body.stock,
+        in_stock: req.body.in_stock,
         category_id: req.body.category_id
     })
         .then(dbItemData => res.json(dbItemData))
@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
 
 // PUT /api/items/:id
 router.put('/:id', (req, res) => {
-    // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "stock": #, "category_id": #}
+    // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "in_stock": #, "category_id": #}
     Item.update(
         {
             where: {
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
-            stock: req.body.stock,
+            in_stock: req.body.in_stock,
             category_id: req.body.category_id
         }
     )

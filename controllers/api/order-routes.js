@@ -26,8 +26,6 @@ router.get('/', (req, res) => {
         });
 });
 
-module.exports = router;
-
 // GET /api/orders/:id
 router.get('/:id', (req, res) => {
     Order.findOne({

@@ -27,7 +27,7 @@ Item.init(
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    stock: {
+    in_stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,

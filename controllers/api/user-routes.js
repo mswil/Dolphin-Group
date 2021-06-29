@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
         req.session.save( () => {
             req.session.user_id = dbCreateUserData.id;
             req.session.email = dbCreateUserData.email;
-            req.session.isAdmin = dbCreateUserData.isAdmin;
+            req.session.is_admin = dbCreateUserData.is_admin;
             req.session.loggedIn = true;
 
             res.json(dbCreateUserData)
