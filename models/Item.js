@@ -20,7 +20,7 @@ Item.init(
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true
     },
     price: {
@@ -30,7 +30,7 @@ Item.init(
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 10,
+      defaultValue: 0,
       validate: {
         isNumeric: true
       }
