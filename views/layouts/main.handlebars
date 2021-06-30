@@ -44,7 +44,7 @@
         <div class="buttons">
           {{#if session.loggedIn}}
 
-          <a class="button is-primary">
+          <a class="button is-primary" id='logout'>
             <strong>Log Out</strong>
           </a>
           {{else}}
@@ -52,6 +52,7 @@
             <strong>Login Or Sign up</strong>
           </a>
           {{/if}}
+
         </div>
       </div>
     </div>
@@ -64,6 +65,7 @@
     {{{body}}}
 </main>
 <script src="/Javascript/navbar.js"></script>
+<script src='/Javascript/logout.js'></script>
 </body>
 
 

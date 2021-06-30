@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const { withAuth } = require('../utils/auth')
 
 // POST /user/login
 router.post('/login', (req, res) => {
@@ -20,7 +21,7 @@ router.post('/login', (req, res) => {
       req.session.save(() => {
         req.session.user_id = dbUser.id;
         req.session.email = dbUser.email;
-        req.session.isAdmin = dbUser.is_admin;
+        req.session.is_admin = dbUser.is_admin;
         req.session.loggedIn = true;
 
         res.json({ user: dbUser, message: 'You are now logged in!' });
@@ -42,7 +43,7 @@ router.get('/login', (req, res) => {
 });
 
 // POST /user/logout
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -51,5 +52,15 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+//sign up page
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/')
+    return
+  }
+
+  res.render('signup')
+})
 
 module.exports = router;
