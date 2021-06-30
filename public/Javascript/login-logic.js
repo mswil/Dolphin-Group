@@ -3,21 +3,19 @@ const loginFormHandler = async function (event) {
   const email = document.querySelector('#username-input-login');
   const password = document.querySelector('#password-input-login');
   const formData = {
-    email: email.value,
-    password: password.value,
+    email: email.value.trim(),
+    password: password.value.trim(),
   };
 
-  const loginRequest = new Request('/login', {
-    method: 'POST',
+  const loginRequest = new Request('/user/login', {
+    method: 'post',
+    body: JSON.stringify(formData),
     headers: {
       'Content-Type': 'application/json',
     },
-
-    body: JSON.stringify(formData),
   });
-  console.log(loginRequest);
+  // console.log(loginRequest);
   fetch(loginRequest)
-    //   CRUD('POST', '/login', formData)
     .then((response) => {
       console.log(response);
       if (!response.ok) {
