@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Category, Item } = require('../../models');
+const { withAdmin } = require('../../utils/auth');
 
 // GET /api/categories
 router.get('/', (req, res) => {
@@ -41,7 +42,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/categories
-router.post('/', (req, res) => {
+router.post('/', withAdmin, (req, res) => {
     // expect {"name": "asdf"}
     Category.create(req.body)
         .then(dbCategoryData => res.json(dbCategoryData))
@@ -52,7 +53,7 @@ router.post('/', (req, res) => {
 });
 
 // DELETE /api/categories/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAdmin, (req, res) => {
     Category.destroy({
         where: {
             id: req.params.id

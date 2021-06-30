@@ -16,7 +16,7 @@ const findCategories = async () => {
 };
 
 // GET /admin
-router.get('/', /*withAdmin,*/ async (req, res) => {
+router.get('/', withAdmin, async (req, res) => {
   try {
 
     const items = await findItems();

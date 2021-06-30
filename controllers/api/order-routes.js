@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Order, Item, OrderItems } = require('../../models');
+const { withAuth } = require('../../utils/auth');
 
 // GET /api/orders
 router.get('/', (req, res) => {
@@ -61,10 +62,10 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/orders
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // expects {"user_id": #}
     Order.create({
-        user_id: req.body.user_id
+        user_id: req.session.user_id
     })
         .then(dbOrderInfo => res.json(dbOrderInfo))
         .catch(err => {
@@ -74,7 +75,7 @@ router.post('/', (req, res) => {
 });
 
 // POST /api/orders/add-item
-router.post('/add-item', (req, res) => {
+router.post('/add-item', withAuth, (req, res) => {
     // expects {"item_id": #, "order_id": #, "amount_ordered": #}
     OrderItems.create(req.body)
         .then(dbOrderItem => res.json(dbOrderItem))
@@ -85,7 +86,7 @@ router.post('/add-item', (req, res) => {
 });
 
 // PUT /api/order/update-item-amount/:id
-router.put('/update-item-amount/:id', (req, res) => {
+router.put('/update-item-amount/:id', withAuth, (req, res) => {
     // expects {"amount_ordered": #}
     OrderItems.update(
         {
@@ -110,7 +111,7 @@ router.put('/update-item-amount/:id', (req, res) => {
 });
 
 // DELETE /api/orders/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Order.destroy({
         where: {
             id: req.params.id
@@ -130,7 +131,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // DELETE /api/orders/remove-item/:id
-router.delete('/remove-item/:id', (req, res) => {
+router.delete('/remove-item/:id', withAuth, (req, res) => {
     OrderItems.destroy({
         where: {
             id: req.params.id
