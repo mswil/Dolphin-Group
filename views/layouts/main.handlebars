@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="bgcolor" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <title>Dolphin Management</title>
 </head>
+ 
 <body>
+    <div class="columns">
+        <div class="column is-full">
+          <h1 class="is-size-1 ml-5 mt-5 textcolor">Brand Name</h1>
+        
+        </div></div>
+    <nav class="navbar secondary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item textcolor" href="/">
+      <strong>Shop</strong>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu secondary">
+    <div class="navbar-start">
+      <a class="navbar-item textcolor">
+        <strong>Cart</strong>
+      </a>
+
+      <a class="navbar-item textcolor" href="/admin">
+        <strong>Admin</strong>
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" href="/user/login">
+            <strong>Login Or Sign up</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+
+<main>
     {{{body}}}
+</main>
+<script src="/Javascript/navbar.js"></script>
 </body>
+
+
 </html>

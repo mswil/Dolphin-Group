@@ -1,0 +1,32 @@
+.light-theme {
+  color: #000000;
+  background: #00ff00;
+}
+.bgcolor {
+  background-color: #0097a7;
+}
+.secondary {
+  background-color: #93c470;
+}
+.textcolor {
+  color: #eeeeee;
+}
+
+.borderbox {
+  border: 2px solid #000000;
+}
+.card {
+  height: 350px;
+}
+.card-header {
+  height: 20%;
+  overflow: hidden;
+}
+.card-content {
+  height: 70%;
+  overflow: hidden;
+}
+.card-footer {
+  height: 10%;
+  overflow: hidden;
+}

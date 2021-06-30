@@ -1,0 +1,37 @@
+{{!-- Needs:
+link for adding product and api route that posts it
+table to display products and info
+form to add product
+link to remove a product --}}
+<div class="section">
+    
+<table class="table container">
+    
+<thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th># In Stock</th>
+    <th>Price</th>
+</thead>
+<tbody>
+
+{{#each items}}
+{{> admin-table }}
+{{/each}}
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><div class="button secondary ">
+        <a href="" class="textcolor"><strong>Add Item</strong></a>
+    </div></td>
+    <td><div class="button secondary ">
+        <a href="" class="textcolor"><strong>Edit</strong></a>
+    </div></td>
+    
+</tr>
+</tbody>
+</table>
+
+</div>

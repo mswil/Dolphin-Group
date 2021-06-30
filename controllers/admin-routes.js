@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
     const plainCategories = categories.map((category) =>
       category.get({ plain: true })
     );
-    res.render('homepage', {
+    res.render('admin-view', {
       items: plainItems,
       categories: plainCategories,
       loggedIn: req.session.loggedIn,
