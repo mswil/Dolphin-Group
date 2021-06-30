@@ -15,7 +15,7 @@ async function signupFormHandler(event) {
       })
   
       if (response.ok) {
-        document.location.replace('/admin')
+        document.location.replace('/')
       } else {
         alert('Error')
       }
