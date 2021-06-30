@@ -9,7 +9,5 @@ async function CRUD(type, route, data) {
     },
     body: JSON.stringify(data),
   });
-  return response.JSON();
+  return response;
 }
-
-module.exports = CRUD;
