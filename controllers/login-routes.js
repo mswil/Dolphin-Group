@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../models');
-const { withAuth } = require('../utils/auth')
+const { withAuth } = require('../utils/auth');
 
 // POST /user/login
 router.post('/login', (req, res) => {
@@ -56,11 +56,11 @@ router.post('/logout', withAuth, (req, res) => {
 //sign up page
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/')
-    return
+    res.redirect('/');
+    return;
   }
 
-  res.render('signup')
-})
+  res.render('signup');
+});
 
 module.exports = router;
