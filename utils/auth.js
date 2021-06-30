@@ -1,18 +1,17 @@
 const withAuth = (req, res, next) => {
   if (!req.session.user_id) {
-    res.redirect("/login")
+    res.redirect('/user/login');
   } else {
-    next()
+    next();
   }
 };
 
 const withAdmin = (req, res, next) => {
   if (!req.session.is_admin) {
-    res.redirect('/')
+    res.redirect('/');
+  } else {
+    next();
   }
-  else {
-    next()
-  }
-}
+};
 
-module.exports = { withAuth, withAdmin }
+module.exports = { withAuth, withAdmin };
