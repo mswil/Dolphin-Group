@@ -22,10 +22,19 @@ const findOrder = async (userId) => {
 router.get('/', async (req, res) => {
   try {
     const order = await findOrder(req.session.user_id);
+
     const plainOrder = order.get({ plain: true });
 
+    const orderItems = plainOrder.order_items.map(orderItem => {
+      return {
+        name: orderItem.item.name,
+        amountOrdered: orderItem.amount_ordered,
+        price: orderItem.item.price
+      };
+    });
+
     res.render('cart-view', {
-      order: plainOrder
+      orderItem: orderItems
     });
   }
   catch (err) {
