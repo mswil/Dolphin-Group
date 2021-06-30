@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const { withAuth } = require('../utils/auth')
 
 // POST /user/login
 router.post('/login', (req, res) => {
@@ -42,7 +43,7 @@ router.get('/login', (req, res) => {
 });
 
 // POST /user/logout
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

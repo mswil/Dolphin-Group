@@ -1,43 +1,37 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 const { Item, Category } = require('../models');
+const { withAdmin } = require('../utils/auth');
 
-const findItems = async (itemName, categoryId) => {
-  const include = {
-    model: Category,
-    attributes: [['name', 'category_name']],
-  };
-
-  const where = {};
-  if (itemName) {
-    where.name = itemName;
-  }
-  if (categoryId) {
-    where.category_id = parseInt(categoryId);
-  }
-
-  return await Item.findAll({ where, include });
+const findItems = async () => {
+  return await Item.findAll({
+    include: {
+      model: Category,
+      attributes: [['name', 'category_name']],
+    }
+  });
 };
 
 const findCategories = async () => {
   return await Category.findAll({});
 };
 
-router.get('/', async (req, res) => {
+// GET /admin
+router.get('/', withAdmin, async (req, res) => {
   try {
-    // http://localhost:3001/?item_name=name
-    const items = await findItems(req.query.item_name, req.query.category_id);
+
+    const items = await findItems();
     const plainItems = items.map((item) => item.get({ plain: true }));
-    // http://localhost:3001/?category_id=#
+
     const categories = await findCategories();
     const plainCategories = categories.map((category) =>
       category.get({ plain: true })
     );
+
     res.render('admin-view', {
       items: plainItems,
       categories: plainCategories,
       loggedIn: req.session.loggedIn,
-      isAdmin: req.session.isAdmin,
+      isAdmin: req.session.is_admin,
     });
   } catch (err) {
     res.status(500).json(err);

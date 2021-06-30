@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Order, OrderItems, Item } = require('../models');
+const { withAuth } = require('../utils/auth');
 
 const findOrder = async (userId) => {
   return await Order.findOne({
@@ -19,7 +20,7 @@ const findOrder = async (userId) => {
 };
 
 // GET /cart
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const order = await findOrder(req.session.user_id);
 
