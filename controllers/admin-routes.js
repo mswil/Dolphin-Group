@@ -31,7 +31,7 @@ router.get('/', withAdmin, async (req, res) => {
       items: plainItems,
       categories: plainCategories,
       loggedIn: req.session.loggedIn,
-      isAdmin: req.session.is_admin,
+      is_admin: req.session.is_admin,
     });
   } catch (err) {
     res.status(500).json(err);
