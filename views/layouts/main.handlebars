@@ -42,10 +42,17 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+          {{#if session.loggedIn}}
+
+          <a class="button is-primary" id='logout'>
+            <strong>Log Out</strong>
+          </a>
+          {{else}}
           <a class="button is-primary" href="/user/login">
             <strong>Login Or Sign up</strong>
           </a>
-          <button id='logout' class='btn-no-style'>Logout</button>
+          {{/if}}
+
         </div>
       </div>
     </div>

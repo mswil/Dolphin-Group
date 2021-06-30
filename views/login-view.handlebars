@@ -1,19 +1,23 @@
+<div class="section">
+<div class="container">
 <div class="card">
-  <div class="card-header">
-    <h2>Login</h2>
+  <div class="card-header secondary">
+    <h2 class="is-size-2 ml-4"><strong class="textcolor">Login</strong></h2>
   </div>
-  <form id="login-form" class="card-body">
-    <div>
-      <label for="username-input-login">Email:</label>
-      <input type="text" id="username-input-login" />
+  <form id="login-form" class="card-body m-4">
+    <div class="field">
+      <label for="username-input-login" class="label">Email:</label>
+      <input type="text" id="username-input-login" class="input"/>
     </div>
-    <div>
-      <label for="password-input-login" class="form-label">Password:</label>
-      <input type="password" id="password-input-login" />
+    <div class="field">
+      <label for="password-input-login" class="label">Password:</label>
+      <input type="password" id="password-input-login" class="input" />
     </div>
-    <button type="submit" id="login-btn" class="btn">Login!</button>
-    <a type="button" href="/user/signup">Sign up instead</a>
+    <button type="submit" id="login-btn" class="button secondary textcolor">Login</button>
+    <a type="button" href="/signup" class="button secondary textcolor" >Sign up instead</a>
   </form>
 </div>
+</div>
+</div>
+<script src="/Javascript/login.js"></script>
 
-<script src='/Javascript/login.js'></script>
