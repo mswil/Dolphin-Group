@@ -16,13 +16,13 @@
     <div class="content">
         {{!-- Item description --}}
      <p>{{description}}</p>
-     <p>{{price}}</p>
-     <p>{{in_stock}}</p>
+     <p>${{price}}</p>
+     <p>Amount In Stock: {{in_stock}}</p>
     </div>
   </div>
-    <div class="card-footer secondary borderbox">
+    <div class="card-footer secondary">
       {{!-- route add to cart --}}
-      <a class="card-footer-item" href="/api-here/{{id}}">Add to Cart</a>
+      <button type="submit" class="card-footer-item button secondary textcolor" id="add-btn" data-item-id="{{id}}">Add to Cart</button>
       
     </div>
   </div>

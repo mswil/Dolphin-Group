@@ -9,10 +9,13 @@
     <th>Amount</th>
 </thead>
 <tbody>
-
+{{#if orderItem}}
 {{#each orderItem}}
 {{> order-table }}
 {{/each}}
+{{else}}
+<tr><td>Cart is Empty</td></tr>
+{{/if}}
 <tr>
     <td></td>
     <td></td>
