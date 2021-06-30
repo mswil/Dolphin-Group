@@ -1,0 +1,27 @@
+<div class="section">
+    
+<table class="table container">
+    
+<thead>
+    
+    <th>Name</th>
+    <th>Price</th>
+    <th>Amount</th>
+</thead>
+<tbody>
+
+{{#each order}}
+{{> order-table }}
+{{/each}}
+<tr>
+    <td></td>
+    <td></td>
+    <td><div class="button secondary ">
+        <a class="textcolor"><strong>Place Order</strong></a>
+    </div></td>
+    
+</tr>
+</tbody>
+</table>
+
+</div>
