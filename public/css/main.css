@@ -30,3 +30,7 @@
   height: 10%;
   overflow: hidden;
 }
+
+.hidden {
+  display: none;
+}
