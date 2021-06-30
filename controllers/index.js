@@ -10,7 +10,6 @@ router.use('/user', loginRoutes);
 router.use('/', homeRoutes);
 router.use('/admin', adminRoutes);
 router.use('/cart', cartRoutes);
-router.use('/login', loginRoutes);
 
 router.use((req, res) => {
   res.status(404).end();
