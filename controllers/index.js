@@ -7,9 +7,9 @@ const loginRoutes = require('./login-routes');
 
 router.use('/api', apiRoutes);
 router.use('/user', loginRoutes);
-router.use('/', homeRoutes);
 router.use('/admin', adminRoutes);
 router.use('/cart', cartRoutes);
+router.use('/', homeRoutes);
 
 router.use((req, res) => {
   res.status(404).end();
