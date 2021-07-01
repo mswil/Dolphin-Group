@@ -44,7 +44,7 @@ link to remove a product --}}
     <form class="field secondary px-5 py-4">
         <label class="label textcolor" for="item-name">Item</label>
         <div class="select">
-            <select name="item-name" id="item-name">
+            <select name="item-name">
                 {{#each items}}
                 <option value={{id}}>{{name}}</option>
                 {{/each}}
@@ -52,15 +52,15 @@ link to remove a product --}}
         </div>
 
         <label class="label textcolor" for="edit-description">Description</label>
-        <textarea name="edit-description" id="edit-description" class="textarea has-fixed-size"></textarea>
+        <textarea name="edit-description" class="textarea has-fixed-size"></textarea>
 
         <label class="label textcolor" for="edit-in-stock"># In Stock</label>
-        <input name="edit-in-stock" id="edit-in-stock" class="input">
+        <input name="edit-in-stock" class="input">
 
         <label class="label textcolor" for="edit-price">Price</label>
-        <input name="edit-price" id="edit-price" class="input mb-3">
+        <input name="edit-price" class="input mb-3">
 
-        <button id="edit" type="submit" class="button is-primary">Make Edits</button>
+        <button type="submit" class="button is-primary">Make Edits</button>
 
     </form>
 </div>
@@ -68,18 +68,18 @@ link to remove a product --}}
 <div class="section add-form hidden">
     <form class="field secondary px-5 py-4">
         <label class="label textcolor" for="add-name">Item Name</label>
-        <input name="add-name" id="add-name" class="input">
+        <input name="add-name" class="input">
 
         <label class="label textcolor" for="add-description">Description</label>
-        <textarea name="add-description" id="add-description" class="textarea has-fixed-size"></textarea>
+        <textarea name="add-description" class="textarea has-fixed-size"></textarea>
 
         <label class="label textcolor" for="add-in-stock"># In Stock</label>
-        <input name="add-in-stock" id="add-in-stock" class="input">
+        <input name="add-in-stock" class="input">
 
         <label class="label textcolor" for="add-price">Price</label>
-        <input name="add-price" id="add-price" class="input mb-3">
+        <input name="add-price" class="input mb-3">
 
-        <button id="add" type="submit" class="button is-primary">Add Item</button>
+        <button type="submit" class="button is-primary">Add Item</button>
 
     </form>
 </div>
