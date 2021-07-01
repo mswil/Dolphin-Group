@@ -1,20 +1,29 @@
-.light-theme {
-  color: #000000;
-  background: #00ff00;
+:root {
+  --primary: #0097a7;
+  --secondary: #93c470;
 }
+
+/* Utils */
 .bgcolor {
-  background-color: #0097a7;
+  background-color: var(--primary);
 }
 .secondary {
-  background-color: #93c470;
+  background-color: var(--secondary);
 }
 .textcolor {
   color: #eeeeee;
 }
 
-.borderbox {
-  border: 2px solid #000000;
+.hidden {
+  display: none;
 }
+
+.image {
+  display: inline-block;
+}
+/* end Utils */
+
+/* Card */
 .card {
   height: 350px;
 }
@@ -23,14 +32,29 @@
   overflow: hidden;
 }
 .card-content {
-  height: 70%;
+  height: 60%;
   overflow: hidden;
 }
 .card-footer {
-  height: 10%;
+  height: 20%;
   overflow: hidden;
 }
+/* end Card */
 
-.hidden {
-  display: none;
+.clothes-background {
+  background-image: url(/assets/blue-clothes.jpg); 
+  background-position: 0 55%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.button {
+  border-color: transparent;
+}
+
+.sm-container {
+	max-width: none !important;
+	padding-left: 20%;
+	padding-right: 20%;
+	width: 100%;
 }

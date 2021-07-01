@@ -1,29 +1,27 @@
 <div class="column is-one-quarter">
   <div class="card">
-    {{!-- Add image if time --}}
-  {{!-- <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="" alt="">
-    </figure>
-  </div> --}}
-  <div class="card-header secondary">
+
+    <div class="card-header secondary is-size-5">
       <p class="card-header-title is-centered textcolor">
-          {{!-- Item Name --}}
-          {{name}}
+        {{!-- Item Name --}}
+        {{name}}
       </p>
-  </div>
-  <div class="card-content">
-    <div class="content">
-        {{!-- Item description --}}
-     <p>{{description}}</p>
-     <p>${{price}}</p>
-     <p>Amount In Stock: {{in_stock}}</p>
     </div>
-  </div>
-    <div class="card-footer secondary">
+    <div class="card-content is-flex is-flex-wrap-wrap">
+      {{!-- Item description --}}
+      <div class="column is-full mb-3">{{description}}</div>
+      <div class="column is-full" style="text-align: right;">
+        Amount In Stock: {{in_stock}}
+        <br>
+        ${{price}}
+      </div>
+    </div>
+    <div class="card-footer secondary is-flex is-justify-content-center">
       {{!-- route add to cart --}}
-      <button type="submit" class="card-footer-item button secondary textcolor" id="add-btn" data-item-id="{{id}}">Add to Cart</button>
-      
+      <button type="submit" class="button secondary textcolor is-align-self-center is-size-5" id="add-btn"
+        data-item-id="{{id}}">Add
+        to Cart</button>
+
     </div>
   </div>
 </div>
