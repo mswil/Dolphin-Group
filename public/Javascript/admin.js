@@ -48,17 +48,68 @@ async function addItemFormHandler(event) {
     }
 }
 
+async function editItemFormHandler(event) {
+    event.preventDefault();
+
+    const itemID = document.querySelector('select[name="edit-item"]').value.trim();
+    const name = document.querySelector('input[name="edit-name"]').value.trim();
+    const description = document.querySelector('textarea[name="edit-description"]').value.trim();
+    const in_stock = document.querySelector('input[name="edit-in-stock"]').value.trim();
+    const price = document.querySelector('input[name="edit-price"]').value.trim();
+
+    if (!itemID) {
+        alert('Select the item you wish to edit');
+        return;
+    }
+
+    if (!name) {
+        alert('Item Name is empty');
+        return;
+    }
+
+    if (!in_stock) {
+        alert('# In Stock is empty');
+        return;
+    }
+
+    if (!price) {
+        alert('Price is empty');
+        return;
+    }
+
+    const response = await fetch(`/api/items/${itemID}`, {
+        method: 'put',
+        body: JSON.stringify({
+            name,
+            description,
+            in_stock,
+            price
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    const responseBody = await response.json();
+
+    if (response.ok) {
+        document.location.replace('/admin');
+    }
+    else if (responseBody?.message) {
+        alert(responseBody.message);
+    }
+    else {
+        alert(response.statusText);
+    }
 }
 
 
 const showFormEl = showForm => {
     switch (showForm) {
         case 'add':
-            addFormEl.classList.remove('hidden');
+            addFormEl.classList.toggle('hidden')
             editFormEl.classList.add('hidden');
             break
         case 'edit':
-            editFormEl.classList.remove('hidden');
+            editFormEl.classList.toggle('hidden');
             addFormEl.classList.add('hidden');
             break
         default:
@@ -71,3 +122,4 @@ document.querySelector('.add-btn').addEventListener('click',() =>  showFormEl('a
 document.querySelector('.edit-btn').addEventListener('click', () => showFormEl('edit'));
 
 document.querySelector('.add-form').addEventListener('submit', addItemFormHandler);
+document.querySelector('.edit-form').addEventListener('submit', editItemFormHandler);
