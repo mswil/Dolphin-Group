@@ -1,5 +1,6 @@
 const addFormEl = document.querySelector('.add-form');
 const editFormEl = document.querySelector('.edit-form');
+const deleteFormEl = document.querySelector('.delete-form');
 
 async function addItemFormHandler(event) {
     event.preventDefault();
@@ -101,25 +102,62 @@ async function editItemFormHandler(event) {
     }
 }
 
+async function deleteItemFormHandler(event) {
+    event.preventDefault();
+
+    const itemID = document.querySelector('select[name="delete-item"]').value.trim();
+
+    if (!itemID) {
+        alert('Select the item you wish to remove');
+        return;
+    }
+
+    const response = await fetch(`/api/items/${itemID}`, {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    const responseBody = await response.json();
+
+    if (response.ok) {
+        document.location.replace('/admin');
+    }
+    else if (responseBody?.message) {
+        alert(responseBody.message);
+    }
+    else {
+        alert(response.statusText);
+    }
+}
 
 const showFormEl = showForm => {
     switch (showForm) {
         case 'add':
             addFormEl.classList.toggle('hidden')
             editFormEl.classList.add('hidden');
+            deleteFormEl.classList.add('hidden');
             break
         case 'edit':
             editFormEl.classList.toggle('hidden');
             addFormEl.classList.add('hidden');
+            deleteFormEl.classList.add('hidden');
+            break
+        case 'delete':
+            deleteFormEl.classList.toggle('hidden');
+            addFormEl.classList.add('hidden');
+            editFormEl.classList.add('hidden');
             break
         default:
             addFormEl.classList.add('hidden');
             editFormEl.classList.add('hidden');
+            deleteFormEl.classList.add('hidden');
     }
 }
 
-document.querySelector('.add-btn').addEventListener('click',() =>  showFormEl('add'));
+document.querySelector('.add-btn').addEventListener('click', () => showFormEl('add'));
 document.querySelector('.edit-btn').addEventListener('click', () => showFormEl('edit'));
+document.querySelector('.delete-btn').addEventListener('click', () => showFormEl('delete'));
 
 document.querySelector('.add-form').addEventListener('submit', addItemFormHandler);
 document.querySelector('.edit-form').addEventListener('submit', editItemFormHandler);
+document.querySelector('.delete-form').addEventListener('submit', deleteItemFormHandler);

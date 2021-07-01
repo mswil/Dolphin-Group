@@ -1,36 +1,48 @@
 .light-theme {
-  color: #000000;
-  background: #00ff00;
+	color: #000000;
+	background: #00ff00;
 }
 .bgcolor {
-  background-color: #0097a7;
+	background-color: #0097a7;
 }
 .secondary {
-  background-color: #93c470;
+	background-color: #93c470;
 }
 .textcolor {
-  color: #eeeeee;
+	color: #eeeeee;
 }
 
 .borderbox {
-  border: 2px solid #000000;
+	border: 2px solid #000000;
 }
 .card {
-  height: 350px;
+	height: 350px;
 }
 .card-header {
-  height: 20%;
-  overflow: hidden;
+	height: 20%;
+	overflow: hidden;
+  font-size: 24px;
 }
 .card-content {
-  height: 70%;
-  overflow: hidden;
+	height: 60%;
+	overflow: hidden;
 }
 .card-footer {
-  height: 10%;
-  overflow: hidden;
+	height: 20%;
+	overflow: hidden;
 }
 
 .hidden {
-  display: none;
+	display: none;
+}
+
+.button {
+  border-color: transparent;
+}
+
+.sm-container {
+	max-width: none !important;
+	padding-left: 20%;
+	padding-right: 20%;
+	width: 100%;
 }

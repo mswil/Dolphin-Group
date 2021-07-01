@@ -3,6 +3,85 @@ link for adding product and api route that posts it
 table to display products and info
 form to add product
 link to remove a product --}}
+
+<div class="sm-container is-flex is-justify-content-space-between m-3">
+    <div class="add-btn button secondary ">
+        <a href="#" class="textcolor"><strong>Add Item</strong></a>
+    </div>
+    <div class="edit-btn button secondary ">
+        <a href="#" class="textcolor"><strong>Edit</strong></a>
+    </div>
+    <div class="delete-btn button secondary ">
+        <a href="#" class="textcolor"><strong>Remove Item</strong></a>
+    </div>
+</div>
+
+<div class="section add-form pb-1 hidden">
+    <form class="field secondary px-5 py-4">
+        <label class="label textcolor" for="add-name">Item Name</label>
+        <input name="add-name" class="input">
+
+        <label class="label textcolor" for="add-description">Description</label>
+        <textarea name="add-description" class="textarea has-fixed-size"></textarea>
+
+        <label class="label textcolor" for="add-in-stock"># In Stock</label>
+        <input name="add-in-stock" class="input">
+
+        <label class="label textcolor" for="add-price">Price</label>
+        <input name="add-price" class="input mb-3">
+
+        <button type="submit" class="button is-primary">Add Item</button>
+
+    </form>
+</div>
+
+<div class="section edit-form pb-1 hidden">
+    <form class="field secondary px-5 py-4">
+        <label class="label textcolor" for="edit-item">Item</label>
+        <div class="select">
+            <select name="edit-item">
+                {{#each items}}
+                <option value={{id}}>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <label class="label textcolor" for="edit-name">New Name</label>
+        <input name="edit-name" class="input">
+
+        <label class="label textcolor" for="edit-description">Description</label>
+        <textarea name="edit-description" class="textarea has-fixed-size"></textarea>
+
+        <label class="label textcolor" for="edit-in-stock"># In Stock</label>
+        <input name="edit-in-stock" class="input">
+
+        <label class="label textcolor" for="edit-price">Price</label>
+        <input name="edit-price" class="input mb-3">
+
+        <button type="submit" class="button is-primary">Make Edits</button>
+
+    </form>
+</div>
+
+<div class="section delete-form pb-1 hidden">
+    <div class="is-flex is-justify-content-center">
+
+    <form class="field secondary px-5 py-4" >
+        <label class="label textcolor" for="delete-item">Item</label>
+        <div class="select">
+            <select name="delete-item">
+                {{#each items}}
+                <option value={{id}}>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="button is-primary mb-1 ml-1">Remove Item</button>
+
+    </form>
+    </div>
+</div>
+
 <div class="section">
 
     <table class="table container">
@@ -24,14 +103,10 @@ link to remove a product --}}
                 <td></td>
                 <td></td>
                 <td>
-                    <div class="add-btn button secondary ">
-                        <a href="#" class="textcolor"><strong>Add Item</strong></a>
-                    </div>
+
                 </td>
                 <td>
-                    <div class="edit-btn button secondary ">
-                        <a href="#" class="textcolor"><strong>Edit</strong></a>
-                    </div>
+
                 </td>
 
             </tr>
@@ -40,48 +115,6 @@ link to remove a product --}}
 
 </div>
 
-<div class="section edit-form hidden">
-    <form class="field secondary px-5 py-4">
-        <label class="label textcolor" for="item-name">Item</label>
-        <div class="select">
-            <select name="item-name">
-                {{#each items}}
-                <option value={{id}}>{{name}}</option>
-                {{/each}}
-            </select>
-        </div>
 
-        <label class="label textcolor" for="edit-description">Description</label>
-        <textarea name="edit-description" class="textarea has-fixed-size"></textarea>
-
-        <label class="label textcolor" for="edit-in-stock"># In Stock</label>
-        <input name="edit-in-stock" class="input">
-
-        <label class="label textcolor" for="edit-price">Price</label>
-        <input name="edit-price" class="input mb-3">
-
-        <button type="submit" class="button is-primary">Make Edits</button>
-
-    </form>
-</div>
-
-<div class="section add-form hidden">
-    <form class="field secondary px-5 py-4">
-        <label class="label textcolor" for="add-name">Item Name</label>
-        <input name="add-name" class="input">
-
-        <label class="label textcolor" for="add-description">Description</label>
-        <textarea name="add-description" class="textarea has-fixed-size"></textarea>
-
-        <label class="label textcolor" for="add-in-stock"># In Stock</label>
-        <input name="add-in-stock" class="input">
-
-        <label class="label textcolor" for="add-price">Price</label>
-        <input name="add-price" class="input mb-3">
-
-        <button type="submit" class="button is-primary">Add Item</button>
-
-    </form>
-</div>
 
 <script src="/Javascript/admin.js"></script>
