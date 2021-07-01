@@ -52,11 +52,29 @@ async function addItemFormHandler(event) {
 const showEditForm = () => {
     editFormEl.classList.toggle('hidden')
 }
-const showAddForm = () => {
-    addFormEl.classList.toggle('hidden')
+
+
+const showFormEl = showForm => {
+    console.log('click')
+    switch (showForm) {
+        case 'add':
+            console.log('add')
+            addFormEl.classList.remove('hidden');
+            editFormEl.classList.add('hidden');
+            break
+        case 'edit':
+            console.log('edit')
+            editFormEl.classList.remove('hidden');
+            addFormEl.classList.add('hidden');
+            break
+        default:
+            console.log('default')
+            addFormEl.classList.add('hidden');
+            editFormEl.classList.add('hidden');
+    }
 }
 
-document.querySelector('.add-btn').addEventListener('click', showAddForm);
-document.querySelector('.edit-btn').addEventListener('click', showEditForm);
+document.querySelector('.add-btn').addEventListener('click',() =>  showFormEl('add'));
+document.querySelector('.edit-btn').addEventListener('click', () => showFormEl('edit'));
 
 // document.querySelector('#add').addEventListener('submit', addItemFormHandler);
