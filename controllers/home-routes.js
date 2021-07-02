@@ -10,7 +10,7 @@ const findItems = async (itemName, categoryId) => {
 
   const where = {};
   if (itemName) {
-    where.name = itemName;
+    where.name = sequelize.where(sequelize.fn('LOWER', sequelize.col('item.name')), 'LIKE', '%' + itemName.trim() + '%')
   }
   if (categoryId) {
     where.category_id = parseInt(categoryId);
@@ -40,6 +40,7 @@ router.get('/', async (req, res) => {
       is_admin: req.session.is_admin,
     });
   } catch (err) {
+    console.error(err)
     res.status(500).json(err);
   }
 });

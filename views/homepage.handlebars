@@ -1,8 +1,12 @@
 <section class="columns is-multiline m-2" id="#item-section">
 
+{{#unless items.length}}
+<div>No matches</div>
+{{else}}
 {{#each items}}
 {{> item-card}}
 {{/each}}
+{{/unless}}
 
 </section>
 <script src="/Javascript/orderHandler.js"></script>
