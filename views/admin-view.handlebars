@@ -4,16 +4,26 @@ table to display products and info
 form to add product
 link to remove a product --}}
 
-<div class="sm-container is-flex is-justify-content-space-between m-3">
-    <div class="add-btn button secondary ">
-        <a href="#" class="textcolor"><strong>Add Item</strong></a>
+<div class="columns is-flex is-justify-content-space-between m-3">
+
+    <div class="column has-text-centered">
+        <div class="add-btn button secondary ">
+            <a href="#" class="textcolor"><strong>Add Item</strong></a>
+        </div>
     </div>
-    <div class="edit-btn button secondary ">
-        <a href="#" class="textcolor"><strong>Edit</strong></a>
+
+    <div class="column has-text-centered">
+        <div class="edit-btn button secondary ">
+            <a href="#" class="textcolor"><strong>Edit</strong></a>
+        </div>
     </div>
-    <div class="delete-btn button secondary ">
-        <a href="#" class="textcolor"><strong>Remove Item</strong></a>
+
+    <div class="column has-text-centered">
+        <div class="delete-btn button secondary ">
+            <a href="#" class="textcolor"><strong>Remove Item</strong></a>
+        </div>
     </div>
+
 </div>
 
 <div class="section add-form pb-1 hidden">
@@ -66,19 +76,19 @@ link to remove a product --}}
 <div class="section delete-form pb-1 hidden">
     <div class="is-flex is-justify-content-center">
 
-    <form class="field secondary px-5 py-4" >
-        <label class="label textcolor" for="delete-item">Item</label>
-        <div class="select">
-            <select name="delete-item">
-                {{#each items}}
-                <option value={{id}}>{{name}}</option>
-                {{/each}}
-            </select>
-        </div>
+        <form class="field secondary px-5 py-4">
+            <label class="label textcolor" for="delete-item">Item</label>
+            <div class="select">
+                <select name="delete-item">
+                    {{#each items}}
+                    <option value={{id}}>{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
 
-        <button type="submit" class="button is-primary mb-1 ml-1">Remove Item</button>
+            <button type="submit" class="button is-primary mb-1 ml-1">Remove Item</button>
 
-    </form>
+        </form>
     </div>
 </div>
 
@@ -98,18 +108,6 @@ link to remove a product --}}
             {{#each items}}
             {{> admin-table }}
             {{/each}}
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-
-            </tr>
         </tbody>
     </table>
 
