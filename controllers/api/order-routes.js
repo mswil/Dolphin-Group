@@ -149,4 +149,8 @@ router.delete('/remove-item/:id', withAuth, (req, res) => {
     });
 });
 
+router.use('/place-order', withAuth, (req, res) => {
+  //execute the write file code here
+});
+
 module.exports = router;
