@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Order, Item, OrderItems } = require('../../models');
+const { withAuth } = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/users/:id
-router.get('/id', (req, res) => {
+router.get('/id', withAuth, (req, res) => {
   User.findOne({
     where: {
       id: req.session.user_id,
