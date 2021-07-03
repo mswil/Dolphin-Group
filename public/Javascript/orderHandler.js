@@ -1,61 +1,84 @@
-async function orderHandler(event) {
-  event.preventDefault();
-  let itemID = event.target.getAttribute('data-item-id');
-  // console.log(itemID);
 
-  // fetch order for logic implementation
-  // set a variable to hold data, check if it exists before fetching
-  // Prevents repetitive api calls, variable will flush when page changes
-  let userData;
-  let orderData;
-  let orderID;
+async function checkUserHasOrder() {
+  console.log('check has order')
   const response = await fetch('api/users/id');
-  if (response.ok) {
-    userData = await response.json();
 
-    console.log(userData);
-  } else {
-    alert('Error');
+  if (!response.ok) {
+    console.log(response)
+    if (response.status === 401) {
+      window.location.href = '/user/login';
+      return;
+    }
+    alert(response.statusText);
+    return;
   }
-  orderData = userData.orders[0];
-  if (!orderData) {
-    console.log('create the order');
-    // expects {"user_id": #}
+
+  const userData = await response.json();
+
+  if (!userData.orders.length) {
     const response = await fetch('api/orders', {
-      method: 'POST',
-      body: JSON.stringify({ userData }),
+      method: 'post',
       headers: { 'Content-Type': 'application/json' },
     });
-    let CreateOrderRes = await response.json();
-    console.log(CreateOrderRes);
-  } else {
-    console.log('update the order');
-    // expects {"item_id": #, "order_id": #, "amount_ordered": #}
-    itemsInOrder = orderData.items;
-    orderID = orderData.order_id;
-    // console.log(itemsInOrder);
-    // console.log(itemID);
-    let itemExists;
-    itemsInOrder.forEach((item) => {
-      if (item.order_items.item_id === parseInt(itemID)) itemExists = true;
+    const newOrder = await response.json();
+    return newOrder
+  }
+  console.log(userData);
+  return userData.orders[userData.orders.length - 1];
+};
+
+async function addItemtoOrder(event) {
+  event.preventDefault();
+
+  const order = await checkUserHasOrder();
+  const itemId = parseInt(event.target.getAttribute('data-item-id'));
+
+  const duplicateItem = order.items.find(item => item.order_items.item_id === itemId)
+
+  if (duplicateItem) {
+    const response = await fetch(`api/orders/update-item-amount/${duplicateItem.order_items.id}`, {
+      method: 'put',
+      body: JSON.stringify({
+        amount_ordered: ++duplicateItem.order_items.amount_ordered
+      }),
+      headers: { 'Content-Type': 'application/json' }
     });
-    // console.log(itemExists);
-    if (!itemExists) {
-      const itemObj = {
-        item_id: itemID,
-        order_id: orderID,
-        amount_ordered: 1,
-      };
-      const response = await fetch('api/orders/add-item', {
-        method: 'POST',
-        body: JSON.stringify(itemObj),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      let updateOrderRes = await response.json();
-      console.log(updateOrderRes);
+
+    const responseBody = await response.json();
+
+    if (response.ok) {
+      document.location.replace('/cart');
+    }
+    else if (responseBody?.message) {
+      alert(responseBody.message);
+    }
+    else {
+      alert(response.statusText);
+    }
+  }
+  else {
+    const response = await fetch('api/orders/add-item', {
+      method: 'post',
+      body: JSON.stringify({
+        item_id: itemId,
+        order_id: order.order_id,
+        amount_ordered: 1
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    const responseBody = await response.json();
+
+    if (response.ok) {
+      document.location.replace('/cart');
+    }
+    else if (responseBody?.message) {
+      alert(responseBody.message);
+    }
+    else {
+      alert(response.statusText);
     }
   }
 }
 
-const itemSectionEl = document.getElementById('#item-section');
-itemSectionEl.addEventListener('click', orderHandler);
+document.getElementById('#item-section').addEventListener('click', addItemtoOrder)
