@@ -46,6 +46,22 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
+
+          <div class="search-form">
+            <form class="field has-addons">
+              <div class="control">
+
+                <input name="item_name" class="input" placeholder="Search for an item...">
+              </div>
+              <div class="control">
+
+                <button id="search-item" type="submit" class="button is-primary">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="navbar-item">
           <div class="buttons">
             {{#if loggedIn}}
 
@@ -69,6 +85,12 @@
   <main>
     {{{body}}}
   </main>
+  
+  {{#if loggedIn}}
+  <script src='/Javascript/logout.js'></script>
+  {{/if}}
+  <script src="/Javascript/navbar.js"></script>
+</body>
 
 
   {{#if loggedIn}}

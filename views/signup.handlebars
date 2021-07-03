@@ -1,23 +1,31 @@
-<form class='signup-form'>
-  <h2>
-    Create an account:
-  </h2>
-  <div>
-    <label for='username-signup'>Email::</label>
-    <input type='text' id='username-signup' />
-  </div>
-  <div>
-    <label for='password-signup'>password:</label>
-    <input type='password' id='password-signup' />
-  </div>
-  <div>
-    <button type='submit'>signup</button>
-  </div>
-</form>
+<div class="section">
+  <div class="container">
+    <div class="card">
+      <div class="card-header secondary">
+        <h2 class="is-size-2 ml-4"><strong class="textcolor">Signup</strong></h2>
+      </div>
 
-<div id="login-div">
-  <a href="/user/login">Login instead</a>
+      <form class="signup-form card-body m-4">
+        <div class="field">
+          <label for='username-signup' class="label">Email:</label>
+          <input type='text' id='username-signup' class="input" />
+        </div>
+        <div class="field">
+          <label for='password-signup' class="label">Password:</label>
+          <input type='password' id='password-signup' class="input" />
+        </div>
+        <div class="field">
+          <label for="admin" class="radio">Are you an Admin?</label>
+          <input type="radio" name="admin" id="is-admin"> Yes
+          <input type="radio" name="admin" id="not-admin" checked> No
+        </div>
+        <button type='submit' class="button secondary textcolor">Signup</button>
+        <a href="/user/login" class="button secondary textcolor">Login instead</a>
+
+      </form>
+
+    </div>
+  </div>
 </div>
-
 
 <script src='/Javascript/signup.js'></script>
