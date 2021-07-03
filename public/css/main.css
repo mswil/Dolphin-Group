@@ -11,7 +11,7 @@
   background-color: var(--secondary);
 }
 .textcolor {
-  color: #eeeeee;
+	color: #eeeeee;
 }
 
 .hidden {
@@ -25,11 +25,12 @@
 
 /* Card */
 .card {
-  height: 350px;
+	height: 350px;
 }
 .card-header {
-  height: 20%;
-  overflow: hidden;
+	height: 20%;
+	overflow: hidden;
+  font-size: 24px;
 }
 .card-content {
   height: 60%;

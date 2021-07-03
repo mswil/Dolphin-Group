@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       },
       {
         model: OrderItems,
-        attributes: ['amount_ordered'],
+        attributes: ['id', 'amount_ordered'],
         include: {
           model: Item,
           attributes: [['id', 'item_id'], 'name', 'price'],
