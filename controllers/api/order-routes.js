@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/orders/:id
+// GET /api/orders/id
 router.get('/id', (req, res) => {
   Order.findOne({
     where: {
