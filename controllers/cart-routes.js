@@ -13,7 +13,7 @@ const findOrder = async (userId) => {
       attributes: ['amount_ordered'],
       include: {
         model: Item,
-        attributes: ['name', 'price'],
+        attributes: ['name', 'price', 'id'],
       },
     },
   });
@@ -35,6 +35,7 @@ router.get('/', withAuth, async (req, res) => {
           name: orderItem.item.name,
           amount_ordered: orderItem.amount_ordered,
           price: orderItem.item.price,
+          id: orderItem.item.id,
         };
       });
 
