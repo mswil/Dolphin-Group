@@ -10,10 +10,10 @@ const findOrder = async (userId) => {
     },
     include: {
       model: OrderItems,
-      attributes: ['amount_ordered'],
+      attributes: ['amount_ordered', 'id'],
       include: {
         model: Item,
-        attributes: ['name', 'price', 'id'],
+        attributes: ['name', 'price'],
       },
     },
   });
@@ -35,7 +35,7 @@ router.get('/', withAuth, async (req, res) => {
           name: orderItem.item.name,
           amount_ordered: orderItem.amount_ordered,
           price: orderItem.item.price,
-          id: orderItem.item.id,
+          id: orderItem.id,
         };
       });
 
