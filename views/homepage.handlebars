@@ -4,14 +4,19 @@
   </div>
 </section>
 
-<section class="columns is-multiline m-2" id="#item-section">
+<section class="columns is-multiline m-2 item-cards" id="#item-section">
+
 
 {{#unless items.length}}
 <div>No matches</div>
 {{else}}
 {{#each items}}
-{{> item-card}}
+{{> item-card loggedIn=../loggedIn}}
 {{/each}}
 {{/unless}}
 
 </section>
+
+{{#if loggedIn}}
+<script src="/Javascript/orderHandler.js"></script>
+{{/if}}
