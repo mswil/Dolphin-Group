@@ -4,11 +4,6 @@ async function checkUserHasOrder() {
   const response = await fetch('api/users/id');
 
   if (!response.ok) {
-    console.log(response)
-    if (response.status === 401) {
-      window.location.href = '/user/login';
-      return;
-    }
     alert(response.statusText);
     return;
   }
