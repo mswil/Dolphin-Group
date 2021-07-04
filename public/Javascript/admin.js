@@ -118,7 +118,6 @@ async function deleteItemFormHandler(event) {
     });
 
     const responseBody = await response.json();
-
     if (response.ok) {
         document.location.replace('/admin');
     }

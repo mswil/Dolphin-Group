@@ -10,7 +10,7 @@ const findOrder = async (userId) => {
     },
     include: {
       model: OrderItems,
-      attributes: ['amount_ordered'],
+      attributes: ['amount_ordered', 'id'],
       include: {
         model: Item,
         attributes: ['name', 'price'],
@@ -33,8 +33,9 @@ router.get('/', withAuth, async (req, res) => {
       const orderItems = plainOrder.order_items.map((orderItem) => {
         return {
           name: orderItem.item.name,
-          amountOrdered: orderItem.amount_ordered,
+          amount_ordered: orderItem.amount_ordered,
           price: orderItem.item.price,
+          id: orderItem.id,
         };
       });
 

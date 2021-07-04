@@ -1,9 +1,10 @@
 <div class="section">
     
-<table class="table container">
+<table class="table container" id="order-table">
     
 <thead>
-    
+    <th><div class="delete-btn textcolor button is-small is-rounded is-danger">-
+        </div></th>
     <th>Name</th>
     <th>Price</th>
     <th>Amount</th>
@@ -19,12 +20,13 @@
 <tr>
     <td></td>
     <td></td>
-    <td><div class="button secondary ">
-        <a class="textcolor"><strong>Place Order</strong></a>
-    </div></td>
+    <td>
+        <button class="button secondary" type="submit" id="placeOrder"><strong>Place Order</strong></button>
+    </td>
     
 </tr>
 </tbody>
 </table>
 
 </div>
+<script src="/Javascript/cartHandler.js"></script>

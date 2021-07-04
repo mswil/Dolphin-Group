@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Item, OrderItems } = require('../../models');
-const { withAdmin } = require('../../utils/auth');
+const { withAdmin, withAdminApi } = require('../../utils/auth');
 
 // GET /api/items
 router.get('/', (req, res) => {
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/items
-router.post('/', withAdmin, (req, res) => {
+router.post('/', withAdminApi, (req, res) => {
     // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "in_stock": #, "category_id": #}
     Item.create({
         name: req.body.name,
@@ -59,7 +59,7 @@ router.post('/', withAdmin, (req, res) => {
 });
 
 // PUT /api/items/:id
-router.put('/:id', withAdmin, (req, res) => {
+router.put('/:id', withAdminApi, (req, res) => {
     // expects {"name": "item-name", "description": "best item ever", "price": ##.##, "in_stock": #, "category_id": #}
     Item.update(
         {
@@ -88,7 +88,7 @@ router.put('/:id', withAdmin, (req, res) => {
 });
 
 // DELETE /api/items/:id
-router.delete('/:id', withAdmin, (req, res) => {
+router.delete('/:id', withAdminApi, (req, res) => {
     Item.destroy({
         where: {
             id: req.params.id

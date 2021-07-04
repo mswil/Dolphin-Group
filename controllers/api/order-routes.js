@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Order, Item, OrderItems } = require('../../models');
-const { withAuth } = require('../../utils/auth');
+const { withAuth, withAuthApi } = require('../../utils/auth');
 
 // GET /api/orders
 router.get('/', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/orders/:id
+// GET /api/orders/id
 router.get('/id', (req, res) => {
   Order.findOne({
     where: {
@@ -62,7 +62,7 @@ router.get('/id', (req, res) => {
 });
 
 // POST /api/orders
-router.post('/', withAuth, (req, res) => {
+router.post('/', withAuthApi, (req, res) => {
   // expects {"user_id": #}
   Order.create({
     user_id: req.session.user_id,
@@ -75,7 +75,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 // POST /api/orders/add-item
-router.post('/add-item', withAuth, (req, res) => {
+router.post('/add-item', withAuthApi, (req, res) => {
   // expects {"item_id": #, "order_id": #, "amount_ordered": #}
   OrderItems.create(req.body)
     .then((dbOrderItem) => res.json(dbOrderItem))
@@ -86,7 +86,7 @@ router.post('/add-item', withAuth, (req, res) => {
 });
 
 // PUT /api/order/update-item-amount/:id
-router.put('/update-item-amount/:id', withAuth, (req, res) => {
+router.put('/update-item-amount/:id', withAuthApi, (req, res) => {
   // expects {"amount_ordered": #}
   OrderItems.update(
     {
@@ -111,7 +111,7 @@ router.put('/update-item-amount/:id', withAuth, (req, res) => {
 });
 
 // DELETE /api/orders/:id
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', withAuthApi, (req, res) => {
   Order.destroy({
     where: {
       id: req.params.id,
@@ -131,7 +131,7 @@ router.delete('/:id', withAuth, (req, res) => {
 });
 
 // DELETE /api/orders/remove-item/:id
-router.delete('/remove-item/:id', withAuth, (req, res) => {
+router.delete('/remove-item/:id', withAuthApi, (req, res) => {
   OrderItems.destroy({
     where: {
       id: req.params.id,
@@ -147,6 +147,10 @@ router.delete('/remove-item/:id', withAuth, (req, res) => {
       console.error(err);
       res.status(500).json(err);
     });
+});
+
+router.use('/place-order', withAuth, (req, res) => {
+  //execute the write file code here
 });
 
 module.exports = router;

@@ -1,48 +1,71 @@
-.light-theme {
-	color: #000000;
-	background: #00ff00;
-}
-.bgcolor {
-	background-color: #0097a7;
-}
-.secondary {
-	background-color: #93c470;
-}
-.textcolor {
-	color: #eeeeee;
+:root {
+  --primary: #0097a7;
+  --secondary: #93c470;
 }
 
-.borderbox {
-	border: 2px solid #000000;
+/* Utils */
+.bgcolor {
+  background-color: var(--primary);
 }
-.card {
-	height: 350px;
+.secondary {
+  background-color: var(--secondary);
 }
-.card-header {
-	height: 20%;
-	overflow: hidden;
-  font-size: 24px;
-}
-.card-content {
-	height: 60%;
-	overflow: hidden;
-}
-.card-footer {
-	height: 20%;
-	overflow: hidden;
+.textcolor {
+  color: #eeeeee;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
-.button {
+.image {
+  display: inline-block;
+}
+/* end Utils */
+
+/* Card */
+.card {
+  height: 350px;
+}
+.card-header {
+  height: 20%;
+  overflow: hidden;
+  font-size: 24px;
+}
+.card-content {
+  height: 60%;
+  overflow: hidden;
+}
+.card-footer {
+  height: 20%;
+  overflow: hidden;
+}
+/* end Card */
+
+.clothes-background {
+  background-image: url(/assets/blue-clothes.jpg);
+  background-position: 0 55%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.button,
+.button:hover {
   border-color: transparent;
 }
 
 .sm-container {
-	max-width: none !important;
-	padding-left: 20%;
-	padding-right: 20%;
-	width: 100%;
+  max-width: none !important;
+  padding-left: 20%;
+  padding-right: 20%;
+  width: 100%;
+}
+
+/* Button Control */
+
+.delete-btn > .btnControl {
+  background-color: #eeeeee;
+}
+.delete-btn:hover > .btnControl {
+  background-color: #f14668;
 }
