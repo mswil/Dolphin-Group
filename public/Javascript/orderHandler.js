@@ -4,11 +4,6 @@ async function checkUserHasOrder() {
   const response = await fetch('api/users/id');
 
   if (!response.ok) {
-    console.log(response)
-    if (response.status === 401) {
-      window.location.href = '/user/login';
-      return;
-    }
     alert(response.statusText);
     return;
   }
@@ -29,6 +24,7 @@ async function checkUserHasOrder() {
 
 async function addItemtoOrder(event) {
   event.preventDefault();
+  console.log("click")
 
   const order = await checkUserHasOrder();
   const itemId = parseInt(event.target.getAttribute('data-item-id'));
@@ -81,4 +77,6 @@ async function addItemtoOrder(event) {
   }
 }
 
-document.getElementById('#item-section').addEventListener('click', addItemtoOrder)
+const itemCardButtons = document.querySelectorAll('.item-cards button')
+itemCardButtons.forEach(button => button.addEventListener('click', addItemtoOrder))
+

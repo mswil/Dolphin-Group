@@ -1,3 +1,4 @@
+
 <div class="column is-one-quarter">
   <div class="card">
 
@@ -19,10 +20,13 @@
     </div>
     <div class="card-footer secondary is-flex is-justify-content-center">
       {{!-- route add to cart --}}
-      <button type="submit" class="button secondary textcolor is-align-self-center is-size-5" id="add-btn"
-        data-item-id="{{id}}">Add
-        to Cart</button>
+      {{#if loggedIn}}
+      <button type="button" class="button secondary textcolor is-align-self-center is-size-5" data-item-id="{{id}}">Add to Cart</button>
+      {{else}}
+      <a href="/user/login" class="button secondary textcolor is-align-self-center is-size-5">Add to Cart</a>
+      {{/if}}
 
     </div>
   </div>
 </div>
+
