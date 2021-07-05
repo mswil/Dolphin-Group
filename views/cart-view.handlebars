@@ -1,0 +1,34 @@
+<div class="section">
+    
+<table class="table container" id="order-table">
+    
+<thead>
+    <th><div class="delete-btn textcolor button is-small is-rounded is-danger">-
+        </div></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Amount</th>
+</thead>
+<tbody>
+{{#if orderItem}}
+{{#each orderItem}}
+{{> order-table }}
+{{/each}}
+{{else}}
+<tr><td>Cart is Empty</td></tr>
+{{/if}}
+<tr>
+    <td></td>
+    <td>
+        <button class="button secondary" type="submit" id="edit-Amount"><strong>Edit Amount</strong></button>
+    </td>
+    <td>
+        <button class="button secondary" type="submit" id="placeOrder"><strong>Place Order</strong></button>
+    </td>
+    
+</tr>
+</tbody>
+</table>
+
+</div>
+<script src="/Javascript/cartHandler.js"></script>

@@ -1,0 +1,22 @@
+
+<section class="hero is-medium" >
+  <div class="hero-body clothes-background">
+  </div>
+</section>
+
+<section class="columns is-multiline m-2 item-cards" id="#item-section">
+
+
+{{#unless items.length}}
+<div>No matches</div>
+{{else}}
+{{#each items}}
+{{> item-card loggedIn=../loggedIn}}
+{{/each}}
+{{/unless}}
+
+</section>
+
+{{#if loggedIn}}
+<script src="/Javascript/orderHandler.js"></script>
+{{/if}}

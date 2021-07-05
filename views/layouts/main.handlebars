@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="bgcolor" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>Dolphin Group</title>
+  <link rel="shortcut icon" type="image/png" href="/assets/Dolphin-logo-aqua.png" />
+</head>
+
+<body>
+  <div class="columns">
+    <div class="column is-full">
+      <h1 class="is-size-1 ml-5 mt-5 textcolor"> Dolphin Group <img src="/assets/Dolphin-logo.png"
+          class="image is-64x64" /></h1>
+
+    </div>
+  </div>
+
+  <nav class="navbar secondary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item textcolor" href="/">
+        <strong>Shop</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar" class="navbar-menu secondary">
+      <div class="navbar-start">
+        <a class="navbar-item textcolor" href="/cart">
+          <strong>Cart</strong>
+        </a>
+
+        <a class="navbar-item textcolor" href="/admin">
+          <strong>Admin</strong>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+
+          <div class="search-form">
+            <form class="field has-addons">
+              <div class="control">
+
+                <input name="item_name" class="input" placeholder="Search for an item...">
+              </div>
+              <div class="control">
+
+                <button id="search-item" type="submit" class="button is-primary">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="navbar-item">
+          <div class="buttons">
+            {{#if loggedIn}}
+
+            <a class="button is-primary" id='logout'>
+              <strong>Log Out</strong>
+            </a>
+
+            {{else}}
+            <a class="button is-primary" href="/user/login">
+              <strong>Login Or Sign up</strong>
+            </a>
+            {{/if}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+    {{{body}}}
+  </main>
+  
+  {{#if loggedIn}}
+  <script src='/Javascript/logout.js'></script>
+  {{/if}}
+  <script src="/Javascript/navbar.js"></script>
+</body>
+
+</html>
